@@ -7,9 +7,9 @@ import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import connectDB from "./db/connectDB.js";
 import cookieParser from "cookie-parser";
+import { app, server } from "./socket/socket.js";
 
 // Variable
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Config
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!!");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log(`Server is up and running on PORT : ${PORT}`);
 });
